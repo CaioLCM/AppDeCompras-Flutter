@@ -10,10 +10,10 @@ class ProductItem extends StatelessWidget {
       child: GridTile(
         child: Image.network(product.imageUrl, fit: BoxFit.cover),
         footer: GridTileBar(
-          leading: IconButton(onPressed: null, icon: Icon(Icons.favorite)),
+          leading: IconButton(onPressed: (){}, icon: Icon(Icons.favorite), color: Theme.of(context).colorScheme.secondary,),
           backgroundColor: Colors.black87,
           title: Text(product.title, textAlign: TextAlign.center,),
-          trailing: IconButton(onPressed: null, icon: Icon(Icons.shopping_cart)),
+          trailing: IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart), color: Theme.of(context).colorScheme.secondary),
         ),
         ),
     );
