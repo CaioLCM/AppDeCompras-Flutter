@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:semana6_7/pages/counter_page.dart';
 import 'package:semana6_7/pages/product_detail_page.dart';
 import 'package:semana6_7/pages/products_overview_page.dart';
 import 'package:semana6_7/utils/app_routes.dart';
