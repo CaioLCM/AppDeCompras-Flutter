@@ -52,7 +52,7 @@ class Cart with ChangeNotifier {
   }
 
   void removeItem(String productId) {
-    items.remove(productId);
+    _items.remove(productId);
     notifyListeners();
   }
 
