@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:semana6_7/models/cart.dart';
 import 'package:semana6_7/models/product_list.dart';
 import 'package:semana6_7/pages/counter_page.dart';
 import 'package:semana6_7/pages/product_detail_page.dart';
@@ -16,8 +17,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ProductList(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProductList()),
+        ChangeNotifierProvider(create: (_) => Cart())
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

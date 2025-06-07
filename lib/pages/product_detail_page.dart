@@ -9,7 +9,7 @@ class ProductDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text(product.title, style: TextStyle(color: Colors.white)),
+        title: Text(product.name, style: TextStyle(color: Colors.white)),
       ),
     );
   }

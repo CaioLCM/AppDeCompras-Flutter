@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:semana6_7/components/badgee.dart';
 import 'package:semana6_7/components/product_grid.dart';
+import 'package:semana6_7/models/cart.dart';
 import 'package:semana6_7/models/product_list.dart';
 
 enum FilterOptions {
   Favorite,
   All,
 }
-class ProductsOverviewPage extends StatelessWidget {
+class ProductsOverviewPage extends StatefulWidget {
+  @override
+  State<ProductsOverviewPage> createState() => _ProductsOverviewPageState();
+}
+
+class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
+  
+  bool _showFavoriteOnly = false;
+  
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductList>(context);
@@ -25,16 +35,25 @@ class ProductsOverviewPage extends StatelessWidget {
                   PopupMenuItem(value: FilterOptions.All, child: Text("Todos")),
                 ],
                 onSelected: (FilterOptions selectedValue){
+                  setState(() {
                   if(selectedValue == FilterOptions.Favorite){
-                    provider.showFavoriteOnly();
+                    _showFavoriteOnly = true;
                   } else{
-                    provider.showAll();
-                  }
+                    _showFavoriteOnly = false;
+                  }                    
+                  });
                 },
+          ),
+          Consumer<Cart>(
+            child: IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart)),
+            builder: (ctx, cart, child) => Badgee(
+              value: cart.itemsCount.toString(),
+              child: child!,
+            ),
           ),
         ],
       ),
-      body: ProductGrid(),
+      body: ProductGrid(_showFavoriteOnly),
     );
   }
 }
