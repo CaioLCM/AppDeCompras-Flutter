@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:semana6_7/models/cart.dart';
 import 'package:semana6_7/models/product_list.dart';
+import 'package:semana6_7/pages/cart_page.dart';
 import 'package:semana6_7/pages/counter_page.dart';
 import 'package:semana6_7/pages/product_detail_page.dart';
 import 'package:semana6_7/pages/products_overview_page.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
         ),
         home: ProductsOverviewPage(),
         routes: {
-          AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage()
+          AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
+          AppRoutes.CART: (ctx) => CartPage()
         },
         debugShowCheckedModeBanner: false,
       ),
