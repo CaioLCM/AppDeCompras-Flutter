@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:semana6_7/models/cart.dart';
+import 'package:semana6_7/models/order_list.dart';
 import 'package:semana6_7/models/product_list.dart';
 import 'package:semana6_7/pages/cart_page.dart';
 import 'package:semana6_7/pages/counter_page.dart';
+import 'package:semana6_7/pages/orders_page.dart';
 import 'package:semana6_7/pages/product_detail_page.dart';
 import 'package:semana6_7/pages/products_overview_page.dart';
 import 'package:semana6_7/utils/app_routes.dart';
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ProductList()),
-        ChangeNotifierProvider(create: (_) => Cart())
+        ChangeNotifierProvider(create: (_) => Cart()),
+        ChangeNotifierProvider(create: (_) => OrdersList())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -35,7 +38,8 @@ class MyApp extends StatelessWidget {
         home: ProductsOverviewPage(),
         routes: {
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
-          AppRoutes.CART: (ctx) => CartPage()
+          AppRoutes.CART: (ctx) => CartPage(),
+          AppRoutes.ORDERS: (ctx) => OrdersPage()
         },
         debugShowCheckedModeBanner: false,
       ),
