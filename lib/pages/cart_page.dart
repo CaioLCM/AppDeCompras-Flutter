@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:semana6_7/components/cart_item.dart';
 import 'package:semana6_7/models/cart.dart';
+import 'package:semana6_7/models/order_list.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -30,7 +31,7 @@ class CartPage extends StatelessWidget {
                   Chip(
                     backgroundColor: Theme.of(context).primaryColor,
                     label: Text(
-                      "R\$${cart.totalAmount}",
+                      "R\$${cart.totalAmount.toStringAsFixed(2)}",
                       style: TextStyle(
                         color:
                             Theme.of(
@@ -40,7 +41,10 @@ class CartPage extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  TextButton(onPressed: (){}, child: Text("Comprar"), style: TextButton.styleFrom(textStyle: TextStyle(color: Theme.of(context).primaryColor)),)
+                  TextButton(onPressed: (){
+                    Provider.of<OrdersList>(context, listen: false).addOrder(cart);
+                    cart.clear();
+                  }, child: Text("Comprar"), style: TextButton.styleFrom(textStyle: TextStyle(color: Theme.of(context).primaryColor)),)
                 ],
               ),
             ),
