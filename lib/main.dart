@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.purple,
+            primarySwatch: Colors.blue,
             accentColor: Colors.deepOrange,
           ),
           fontFamily: 'Lato'
