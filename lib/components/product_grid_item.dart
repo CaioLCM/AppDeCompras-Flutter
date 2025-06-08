@@ -5,7 +5,7 @@ import 'package:semana6_7/models/product.dart';
 import 'package:semana6_7/pages/product_detail_page.dart';
 import 'package:semana6_7/utils/app_routes.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
     final cart = Provider.of<Cart>(context);
@@ -29,6 +29,18 @@ class ProductItem extends StatelessWidget {
           title: Text(product.name, textAlign: TextAlign.center),
           trailing: IconButton(
             onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Produto adicionado com sucesso!"),
+                  duration: Duration(seconds: 2),
+                  action: SnackBarAction(
+                    label: 'DESFAZER', 
+                    onPressed: (){
+                      cart.removeSingleItem(product.id);
+                    }),
+                  )
+              );
               cart.addItem(product);
             },
             icon: Icon(Icons.shopping_cart),
